@@ -5,9 +5,9 @@ import pika
 import json
 
 
-def sendmail(server, subject, licencePlates, location, emails):
+def sendmail(server, subject, licencePlates, location):
     msg = f"Subject: {subject}\n\nThe following licence plates were spotted:\n{licencePlates}\nat this location: {location}\n\nRegards,\nCar Catcher Team"  # formatting message
-    for email in emails:
+    for email in ["adamholland12398@gmail.com"]:
         server.sendmail(
             "carcatcherservice@gmail.com",  # sender
             email,  # receiver
@@ -34,9 +34,8 @@ def main():
         subject = message["subject"]
         licencePlates = message["licencePlates"]
         location = message["location"]
-        emails = eval(message["emails"])
 
-        sendmail(server, subject, licencePlates, location, emails)
+        sendmail(server, subject, licencePlates, location)
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
     channel.basic_consume(queue='smtpTESTING', on_message_callback=callback)
