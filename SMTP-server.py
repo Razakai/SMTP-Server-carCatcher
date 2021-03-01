@@ -6,8 +6,6 @@ import json
 
 
 def sendmail(server, subject, licencePlates, location, emails):
-    #subject = "Price fell down"
-    #body = "You should buy this now: https://www.amazon.co.uk/Lacoste-2010871-Mens-Watch/dp/B01KNHQ4V8/ref=sr_1_5?keywords=mens+watch&qid=1568583110&sr=8-5"
     msg = f"Subject: {subject}\n\nThe following licence plates were spotted:\n{licencePlates}\nat this location: {location}\n\nRegards,\nCar Catcher Team"  # formatting message
     for email in emails:
         server.sendmail(
