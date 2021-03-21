@@ -1,1 +1,3 @@
-pika
+rabbitpy
+SQLAlchemy==1.3
+databases[mysql]==0.4.2
