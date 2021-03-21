@@ -1,7 +1,7 @@
 import json
 import rabbitpy
 from database.connection import connectDB, disconnectDB
-from SMTP_server import sendmail
+from SMTP_server import sendmail, startServer, stopServer
 import asyncio
 
 
@@ -28,6 +28,7 @@ async def connection():
                 print('Exited consumer')
 
 async def main():
+    startServer()
     await connectDB()
     await connection()
 
